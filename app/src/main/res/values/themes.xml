@@ -13,4 +13,17 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Base NoActionBar Theme -->
+    <style name="Theme.SuperMarketHelp.NoActionBar">
+        <item name="windowActionBar"> false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Base for title and manu colortheme -->
+    <style name="Theme.MyThemeOverlay.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+    </style>
 </resources>
