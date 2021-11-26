@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview"
+    android:backgroundTint="#0A5F98"
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true">
 

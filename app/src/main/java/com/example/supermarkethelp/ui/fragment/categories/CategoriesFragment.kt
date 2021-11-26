@@ -12,6 +12,7 @@ import com.example.supermarkethelp.R
 import com.example.supermarkethelp.model.Category
 import com.example.supermarkethelp.ui.activity.MainActivity
 import com.example.supermarkethelp.ui.fragment.categories.adapter.CategoriesAdapter
+import com.example.supermarkethelp.ui.fragment.categorydetail.CategoryDetailFragment
 
 
 class CategoriesFragment : Fragment() {
@@ -47,6 +48,14 @@ class CategoriesFragment : Fragment() {
             arguments = Bundle().apply {
                 putString("category", categoryTitle)
             }
+            val fragmentDetails = CategoryDetailFragment()
+            fragmentDetails.arguments = arguments
+            (activity as MainActivity)
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container_fragment, fragmentDetails)
+                .addToBackStack(null)
+                .commit()
         }
         }
     }
