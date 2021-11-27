@@ -1,14 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.categorydetail.CategoryDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="15">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/product_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 1"
+                android:gravity="center"
+                android:layout_alignParentTop="true"/>
+
+            <EditText
+                android:id="@+id/product_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 2"
+                android:gravity="center"
+                android:layout_below="@id/product_1"/>
+
+            <EditText
+                android:id="@+id/product_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 3"
+                android:gravity="center"
+                android:layout_below="@id/product_2"/>
+
+            <EditText
+                android:id="@+id/product_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 4"
+                android:gravity="center"
+                android:layout_below="@id/product_3"/>
+
+            <EditText
+                android:id="@+id/product_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 5"
+                android:gravity="center"
+                android:layout_below="@id/product_4"/>
+
+            <EditText
+                android:id="@+id/product_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 6"
+                android:gravity="center"
+                android:layout_below="@id/product_5"/>
+
+            <EditText
+                android:id="@+id/product_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 7"
+                android:gravity="center"
+                android:layout_below="@id/product_6"/>
+
+            <EditText
+                android:id="@+id/product_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_7"
+                android:gravity="center"
+                android:hint="Produto 8" />
+
+            <EditText
+                android:id="@+id/product_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 9"
+                android:gravity="center"
+                android:layout_below="@id/product_8"/>
+
+            <EditText
+                android:id="@+id/product_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 10"
+                android:gravity="center"
+                android:layout_below="@id/product_9"/>
+
+            <EditText
+                android:id="@+id/product_11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 11"
+                android:gravity="center"
+                android:layout_below="@id/product_10"/>
+
+            <EditText
+                android:id="@+id/product_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_11"
+                android:gravity="center"
+                android:hint="Produto 12" />
+
+            <EditText
+                android:id="@+id/product_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 13"
+                android:gravity="center"
+                android:layout_below="@id/product_12"/>
+
+            <EditText
+                android:id="@+id/product_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 14"
+                android:gravity="center"
+                android:layout_below="@id/product_13"/>
+
+            <EditText
+                android:id="@+id/product_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Produto 15"
+                android:gravity="center"
+                android:layout_below="@id/product_14"/>
+
+        </RelativeLayout>
+
+   </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/btn_save_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:text="Salvar"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/teal_200"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btn_remove_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:text="Excluir"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textStyle="bold"/>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

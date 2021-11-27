@@ -54,7 +54,7 @@ class CategoriesFragment : Fragment() {
                 .supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container_fragment, fragmentDetails)
-                .addToBackStack(null)
+                .addToBackStack(null) //Ao clicar em voltar volta para o fragment anterior
                 .commit()
         }
         }

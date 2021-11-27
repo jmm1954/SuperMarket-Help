@@ -5,30 +5,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.supermarkethelp.R
+import com.example.supermarkethelp.databinding.CardviewItemCategoryBinding
 import com.example.supermarkethelp.model.Category
-import kotlinx.android.synthetic.main.cardview_item_category.view.*
 
 class CategoriesAdapter (
     val categories:MutableList<Category>,
     val onClick: (String) ->Unit
-    ): RecyclerView.Adapter<CategoriesAdapter.CategoriesViewolder>() {
+    ): RecyclerView.Adapter<CategoriesAdapter.CategoriesViewholder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= CategoriesViewolder (
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= CategoriesViewholder (
         LayoutInflater.from(parent.context).inflate(R.layout.cardview_item_category, parent, false)
             )
 
-    override fun onBindViewHolder(holder: CategoriesViewolder, position: Int) {
+    override fun onBindViewHolder(holder: CategoriesViewholder, position: Int) {
        val category = categories [position]
-        val view = holder.itemView
-
-        with (view) {
-            cardview_title.text = category.titleCategoty
-            cardview_image.setImageResource(category.imageCategory)
-            cardview.setOnClickListener { onClick (category.titleCategoty)}
+           with (holder) {
+            binding.cardviewTitle.text = category.titleCategoty
+            binding.cardviewImage.setImageResource(category.imageCategory)
+            binding.cardview.setOnClickListener { onClick (category.titleCategoty)}
         }
     }
     override fun getItemCount()= categories.size
 
-    class CategoriesViewolder(view: View): RecyclerView.ViewHolder(view)
+    class CategoriesViewholder(view: View): RecyclerView.ViewHolder(view) {
+        val binding = CardviewItemCategoryBinding.bind(view)
+    }
 }
