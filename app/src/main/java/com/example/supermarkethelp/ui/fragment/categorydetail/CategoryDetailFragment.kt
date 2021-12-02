@@ -2,6 +2,7 @@ package com.example.supermarkethelp.ui.fragment.categorydetail
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.example.supermarkethelp.R
 import com.example.supermarkethelp.model.*
 import com.example.supermarkethelp.ui.activity.MainActivity
 import com.example.supermarkethelp.util.ModelPreferenceManager
+import java.lang.Exception
 
 
 class CategoryDetailFragment : Fragment() {
@@ -64,9 +66,123 @@ class CategoryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupDataFromTitlePick(getTitleCategory)
+        try {
+            setupDataFromTitlePick(getTitleCategory)
+            showDataFromTitlePick(getTitleCategory)
+        }catch (e:Exception){
+            Log.e("CategoryDetailFragment", "OnViewCriated " + e.message.toString())
+        }
+
+
 
     }
+
+    private fun showDataFromTitlePick(titleCategory: String) {
+        when (titleCategory){
+            "Limpeza"-> getCleaningSavedData()
+            "Higiene" -> getHygieneSavedData()
+            "Alimentação" -> getFoodsSavedData()
+            "Bebidas" -> getDrinksSavedData()
+            "Outros" -> getOthetsSavedData()
+        }
+
+    }
+
+    private fun getOthetsSavedData() {
+        val getObject = prefs.getOthersObject("KEY_OTHERS")
+        product1.setText(getObject.product1)
+        product2.setText(getObject.product2)
+        product3.setText(getObject.product3)
+        product4.setText(getObject.product4)
+        product5.setText(getObject.product5)
+        product6.setText(getObject.product6)
+        product7.setText(getObject.product7)
+        product8.setText(getObject.product8)
+        product9.setText(getObject.product9)
+        product10.setText(getObject.product10)
+        product11.setText(getObject.product11)
+        product12.setText(getObject.product12)
+        product13.setText(getObject.product13)
+        product14.setText(getObject.product14)
+        product15.setText(getObject.product15)
+    }
+
+    private fun getDrinksSavedData() {
+        val getObject = prefs.getDrinksObject("KEY_DRINKS")
+        product1.setText(getObject.product1)
+        product2.setText(getObject.product2)
+        product3.setText(getObject.product3)
+        product4.setText(getObject.product4)
+        product5.setText(getObject.product5)
+        product6.setText(getObject.product6)
+        product7.setText(getObject.product7)
+        product8.setText(getObject.product8)
+        product9.setText(getObject.product9)
+        product10.setText(getObject.product10)
+        product11.setText(getObject.product11)
+        product12.setText(getObject.product12)
+        product13.setText(getObject.product13)
+        product14.setText(getObject.product14)
+        product15.setText(getObject.product15)
+    }
+
+    private fun getFoodsSavedData() {
+        val getObject = prefs.getFoodsObject("KEY_FOODS")
+        product1.setText(getObject.product1)
+        product2.setText(getObject.product2)
+        product3.setText(getObject.product3)
+        product4.setText(getObject.product4)
+        product5.setText(getObject.product5)
+        product6.setText(getObject.product6)
+        product7.setText(getObject.product7)
+        product8.setText(getObject.product8)
+        product9.setText(getObject.product9)
+        product10.setText(getObject.product10)
+        product11.setText(getObject.product11)
+        product12.setText(getObject.product12)
+        product13.setText(getObject.product13)
+        product14.setText(getObject.product14)
+        product15.setText(getObject.product15)
+    }
+
+    private fun getHygieneSavedData() {
+        val getObject = prefs.getHygieneObject("KEY_HYGIENE")
+        product1.setText(getObject.product1)
+        product2.setText(getObject.product2)
+        product3.setText(getObject.product3)
+        product4.setText(getObject.product4)
+        product5.setText(getObject.product5)
+        product6.setText(getObject.product6)
+        product7.setText(getObject.product7)
+        product8.setText(getObject.product8)
+        product9.setText(getObject.product9)
+        product10.setText(getObject.product10)
+        product11.setText(getObject.product11)
+        product12.setText(getObject.product12)
+        product13.setText(getObject.product13)
+        product14.setText(getObject.product14)
+        product15.setText(getObject.product15)
+    }
+
+    private fun getCleaningSavedData() {
+        val getObject = prefs.getCleaningObject("KEY_CLEANING")
+        product1.setText(getObject.product1)
+        product2.setText(getObject.product2)
+        product3.setText(getObject.product3)
+        product4.setText(getObject.product4)
+        product5.setText(getObject.product5)
+        product6.setText(getObject.product6)
+        product7.setText(getObject.product7)
+        product8.setText(getObject.product8)
+        product9.setText(getObject.product9)
+        product10.setText(getObject.product10)
+        product11.setText(getObject.product11)
+        product12.setText(getObject.product12)
+        product13.setText(getObject.product13)
+        product14.setText(getObject.product14)
+        product15.setText(getObject.product15)
+    }
+
 
     private fun setupDataFromTitlePick(titleCategory: String) {
 

@@ -45,4 +45,34 @@ object ModelPreferenceManager {
         preferences.edit().putString(key, jsonString). apply()
 
     }
+
+    fun getCleaningObject(key: String): Cleaning {
+        val value = preferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value,Cleaning::class.java)
+
+    }
+
+    fun getHygieneObject(key: String): Hygiene {
+        val value = preferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value, Hygiene::class.java)
+
+    }
+
+    fun getFoodsObject(key: String): Foods {
+        val value = preferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value,Foods::class.java)
+
+    }
+
+    fun getDrinksObject(key: String): Drinks {
+        val value = preferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value,Drinks::class.java)
+
+    }
+
+    fun getOthersObject(key: String): Others {
+        val value = preferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value,Others::class.java)
+
+    }
 }
