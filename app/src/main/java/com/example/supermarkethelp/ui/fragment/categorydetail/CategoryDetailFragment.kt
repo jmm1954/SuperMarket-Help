@@ -2,8 +2,11 @@ package com.example.supermarkethelp.ui.fragment.categorydetail
 
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -17,11 +20,13 @@ import com.example.supermarkethelp.model.*
 import com.example.supermarkethelp.ui.activity.MainActivity
 import com.example.supermarkethelp.util.ModelPreferenceManager
 import java.lang.Exception
+import kotlin.concurrent.thread
 
 
 class CategoryDetailFragment : Fragment() {
 
     private var getTitleCategory =  ""
+    private var handler= Handler (Looper.getMainLooper())
     private val prefs = ModelPreferenceManager
     private val appContext = MainAplication.getInstance().applicationContext
     private lateinit var btnSave: Button
@@ -45,6 +50,7 @@ class CategoryDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
         if(arguments != null){
             val args = arguments
@@ -58,7 +64,7 @@ class CategoryDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_category_detail, container, false)
-       setupToolbarPickTitle()
+       setupToolbar()
         initializeView (root)
         return root
     }
@@ -71,10 +77,19 @@ class CategoryDetailFragment : Fragment() {
             showDataFromTitlePick(getTitleCategory)
         }catch (e:Exception){
             Log.e("CategoryDetailFragment", "OnViewCriated " + e.message.toString())
+        }finally{
+            Thread.setDefaultUncaughtExceptionHandler { t, e ->
+                Log.e("CategoryDetailFragment", "Caught Thread" + e.message.toString())
+            }
         }
 
+    }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> (activity as MainActivity).onBackPressed()
+        }
+        return true
     }
 
     private fun showDataFromTitlePick(titleCategory: String) {
@@ -89,98 +104,122 @@ class CategoryDetailFragment : Fragment() {
     }
 
     private fun getOthetsSavedData() {
-        val getObject = prefs.getOthersObject("KEY_OTHERS")
-        product1.setText(getObject.product1)
-        product2.setText(getObject.product2)
-        product3.setText(getObject.product3)
-        product4.setText(getObject.product4)
-        product5.setText(getObject.product5)
-        product6.setText(getObject.product6)
-        product7.setText(getObject.product7)
-        product8.setText(getObject.product8)
-        product9.setText(getObject.product9)
-        product10.setText(getObject.product10)
-        product11.setText(getObject.product11)
-        product12.setText(getObject.product12)
-        product13.setText(getObject.product13)
-        product14.setText(getObject.product14)
-        product15.setText(getObject.product15)
+        thread { //faz rodar em uma thread segundária ou segundo plano
+            val getObject = prefs.getOthersObject("KEY_OTHERS")
+            handler.post{ //para que isto aconteça na main thread ou Ui Thread
+                product1.setText(getObject.product1)
+                product2.setText(getObject.product2)
+                product3.setText(getObject.product3)
+                product4.setText(getObject.product4)
+                product5.setText(getObject.product5)
+                product6.setText(getObject.product6)
+                product7.setText(getObject.product7)
+                product8.setText(getObject.product8)
+                product9.setText(getObject.product9)
+                product10.setText(getObject.product10)
+                product11.setText(getObject.product11)
+                product12.setText(getObject.product12)
+                product13.setText(getObject.product13)
+                product14.setText(getObject.product14)
+                product15.setText(getObject.product15)
+            }
+        }.start()
+
     }
 
     private fun getDrinksSavedData() {
-        val getObject = prefs.getDrinksObject("KEY_DRINKS")
-        product1.setText(getObject.product1)
-        product2.setText(getObject.product2)
-        product3.setText(getObject.product3)
-        product4.setText(getObject.product4)
-        product5.setText(getObject.product5)
-        product6.setText(getObject.product6)
-        product7.setText(getObject.product7)
-        product8.setText(getObject.product8)
-        product9.setText(getObject.product9)
-        product10.setText(getObject.product10)
-        product11.setText(getObject.product11)
-        product12.setText(getObject.product12)
-        product13.setText(getObject.product13)
-        product14.setText(getObject.product14)
-        product15.setText(getObject.product15)
+        thread{
+            val getObject = prefs.getDrinksObject("KEY_DRINKS")
+            handler.post{ //para que isto aconteça na main thread ou Ui Thread
+                product1.setText(getObject.product1)
+                product2.setText(getObject.product2)
+                product3.setText(getObject.product3)
+                product4.setText(getObject.product4)
+                product5.setText(getObject.product5)
+                product6.setText(getObject.product6)
+                product7.setText(getObject.product7)
+                product8.setText(getObject.product8)
+                product9.setText(getObject.product9)
+                product10.setText(getObject.product10)
+                product11.setText(getObject.product11)
+                product12.setText(getObject.product12)
+                product13.setText(getObject.product13)
+                product14.setText(getObject.product14)
+                product15.setText(getObject.product15)
+            }
+        }.start()
     }
 
     private fun getFoodsSavedData() {
-        val getObject = prefs.getFoodsObject("KEY_FOODS")
-        product1.setText(getObject.product1)
-        product2.setText(getObject.product2)
-        product3.setText(getObject.product3)
-        product4.setText(getObject.product4)
-        product5.setText(getObject.product5)
-        product6.setText(getObject.product6)
-        product7.setText(getObject.product7)
-        product8.setText(getObject.product8)
-        product9.setText(getObject.product9)
-        product10.setText(getObject.product10)
-        product11.setText(getObject.product11)
-        product12.setText(getObject.product12)
-        product13.setText(getObject.product13)
-        product14.setText(getObject.product14)
-        product15.setText(getObject.product15)
+        thread {
+            val getObject = prefs.getFoodsObject("KEY_FOODS")
+            handler.post{ //para que isto aconteça na main thread ou Ui Thread
+                product1.setText(getObject.product1)
+                product2.setText(getObject.product2)
+                product3.setText(getObject.product3)
+                product4.setText(getObject.product4)
+                product5.setText(getObject.product5)
+                product6.setText(getObject.product6)
+                product7.setText(getObject.product7)
+                product8.setText(getObject.product8)
+                product9.setText(getObject.product9)
+                product10.setText(getObject.product10)
+                product11.setText(getObject.product11)
+                product12.setText(getObject.product12)
+                product13.setText(getObject.product13)
+                product14.setText(getObject.product14)
+                product15.setText(getObject.product15)
+            }
+        }.start()
+
     }
 
     private fun getHygieneSavedData() {
-        val getObject = prefs.getHygieneObject("KEY_HYGIENE")
-        product1.setText(getObject.product1)
-        product2.setText(getObject.product2)
-        product3.setText(getObject.product3)
-        product4.setText(getObject.product4)
-        product5.setText(getObject.product5)
-        product6.setText(getObject.product6)
-        product7.setText(getObject.product7)
-        product8.setText(getObject.product8)
-        product9.setText(getObject.product9)
-        product10.setText(getObject.product10)
-        product11.setText(getObject.product11)
-        product12.setText(getObject.product12)
-        product13.setText(getObject.product13)
-        product14.setText(getObject.product14)
-        product15.setText(getObject.product15)
-    }
+        thread {
+            val getObject = prefs.getHygieneObject("KEY_HYGIENE")
+            handler.post{ //para que isto aconteça na main thread ou Ui Thread
+                product1.setText(getObject.product1)
+                product2.setText(getObject.product2)
+                product3.setText(getObject.product3)
+                product4.setText(getObject.product4)
+                product5.setText(getObject.product5)
+                product6.setText(getObject.product6)
+                product7.setText(getObject.product7)
+                product8.setText(getObject.product8)
+                product9.setText(getObject.product9)
+                product10.setText(getObject.product10)
+                product11.setText(getObject.product11)
+                product12.setText(getObject.product12)
+                product13.setText(getObject.product13)
+                product14.setText(getObject.product14)
+                product15.setText(getObject.product15)
+            }
+        }.start()
+     }
 
     private fun getCleaningSavedData() {
-        val getObject = prefs.getCleaningObject("KEY_CLEANING")
-        product1.setText(getObject.product1)
-        product2.setText(getObject.product2)
-        product3.setText(getObject.product3)
-        product4.setText(getObject.product4)
-        product5.setText(getObject.product5)
-        product6.setText(getObject.product6)
-        product7.setText(getObject.product7)
-        product8.setText(getObject.product8)
-        product9.setText(getObject.product9)
-        product10.setText(getObject.product10)
-        product11.setText(getObject.product11)
-        product12.setText(getObject.product12)
-        product13.setText(getObject.product13)
-        product14.setText(getObject.product14)
-        product15.setText(getObject.product15)
+        thread {
+            val getObject = prefs.getCleaningObject("KEY_CLEANING")
+
+            handler.post { //para que isto aconteça na main thread ou Ui Thread
+                product1.setText(getObject.product1)
+                product2.setText(getObject.product2)
+                product3.setText(getObject.product3)
+                product4.setText(getObject.product4)
+                product5.setText(getObject.product5)
+                product6.setText(getObject.product6)
+                product7.setText(getObject.product7)
+                product8.setText(getObject.product8)
+                product9.setText(getObject.product9)
+                product10.setText(getObject.product10)
+                product11.setText(getObject.product11)
+                product12.setText(getObject.product12)
+                product13.setText(getObject.product13)
+                product14.setText(getObject.product14)
+                product15.setText(getObject.product15)
+            }
+        }.start()
+
     }
 
 
@@ -396,7 +435,11 @@ class CategoryDetailFragment : Fragment() {
 
     }
 
-    private fun setupToolbarPickTitle() {
-        (activity as MainActivity).supportActionBar?.title = "Categoria: ${getTitleCategory}"
+    private fun setupToolbar() {
+        (activity as MainActivity).supportActionBar?.let{
+            it.title = "Categoria: ${getTitleCategory}"
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
     }
 }
